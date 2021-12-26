@@ -1,22 +1,24 @@
-import logo from '../logo.svg';
+import React from 'react';
+import { Container, Row, Accordion} from 'react-bootstrap';
+import { Post } from '../components/Post'
+
 
 export const Posts = () => {
+    const content1 = "ppprueba"
+    
     return (
-        <div className="App">
-            <header className="App-header" id="posts">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                >
-                Learn React
-                </a>
-            </header>
+        <div id="posts">
+            <Container>
+                <Row style={{textAlign: 'center'}}>
+                    <h1>Posts</h1>
+                </Row>
+                <Row>
+                    <Post title="Prueba" content={content1} id="0"/>
+                </Row>
+                <Row>
+                    <Post title="Prueba" content="prueba2" id="1"/>
+                </Row>        
+            </Container>
         </div>
     )
 }
