@@ -10,7 +10,7 @@ export const LandingPage = () => {
         <>
             <NavbarComponent />
             <div className = "landing-page">
-                <Home />
+                {/* <Home /> */}
                 <Posts />
             </div> 
         </>

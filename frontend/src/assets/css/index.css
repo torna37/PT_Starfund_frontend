@@ -40,7 +40,6 @@ html {
 }
 
 
-/* home */
 
 .landing-page{
   height: 100vh;
@@ -105,4 +104,21 @@ html {
   position: relative;
   top: 20%;
   transform: translateY(-50%);
+}
+
+.downvote { 
+  transform: rotate(180deg);
+}
+
+.post-card {
+  /* width: 18rem;  */
+  margin-top: 2rem;
+}
+
+.comment-card {
+  
+}
+
+.collapse {
+  visibility:collapse
 }
