@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
-import { fetchPosts } from '../Api';
+import { createPost, fetchPosts } from '../Api';
 import { Post } from '../components/Post'
 import { doDownvote, doUpvote } from '../Api';
+import { NewPostModal } from '../components/NewPostModal';
+
 
 export const Posts = () => {
     
@@ -25,6 +27,11 @@ export const Posts = () => {
         getPosts()
     }
 
+    const handleNewPost = async (title, content, username) => {
+        await createPost(title, content, username)
+        await getPosts()
+    }
+
     return (
         <div id="posts">
             <Container>
@@ -38,7 +45,11 @@ export const Posts = () => {
                     </Row>
                 ))}        
             </Container>
+        <div>
+            <NewPostModal handleAdd={handleNewPost}/>
         </div>
+        </div>
+
 
     )
 }

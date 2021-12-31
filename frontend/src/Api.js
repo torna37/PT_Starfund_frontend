@@ -50,3 +50,8 @@ export const createComment = async (post_id, content, username) => {
     const body = {"post_id":post_id, "content":content, "username":username}
     createDoRequest("POST", "comments", {"body":JSON.stringify(body)})
 }
+
+export const createPost = async (title, content, username) => {
+    const body = {"title":title, "content":content, "username":username}
+    createDoRequest("POST", "posts", {"body":JSON.stringify(body)})
+}
