@@ -1,18 +1,19 @@
 const server = "http://localhost:3000/"
 
-
-export async function createDoRequest(method, path, body={}) {
+// , body={}
+export async function createDoRequest(method, path, extraOptions) {
     try {
         let headers = new Headers();
         headers.append('Content-Type', "application/json");
         
         const options = {
             headers: headers,
-            method: method,
-            body: body
+            method: method, 
         }
+        
+        const finalOptions = Object.assign({}, options, extraOptions)
 
-        let response = await fetch(server + path, options)
+        let response = await fetch(server + path, finalOptions)
         let json = await response.json();
         
         return json
@@ -47,5 +48,5 @@ export const fetchComments = async (id) => {
 
 export const createComment = async (post_id, content, username) => {
     const body = {"post_id":post_id, "content":content, "username":username}
-    createDoRequest("POST", "comments", body)
+    createDoRequest("POST", "comments", {"body":JSON.stringify(body)})
 }

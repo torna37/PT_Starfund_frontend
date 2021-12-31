@@ -3,13 +3,27 @@ import { Button, Form, Modal } from "react-bootstrap";
 import add from '../assets/images/addComment.svg'
 
 
-export const NewCommentModal = (handleAdd) => {
+export const NewCommentModal = ({handleAdd}) => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    // handleChange = (e) => this.setState({name: e.target.value})
+
+    const [formUsername, setFormUsername] = useState("")
+    
+    const handleChangeUsername = (e) => {
+        setFormUsername(e.target.value)
+    }
+
+    const [formContent, setFormContent] = useState("")
+
+    const handleChangeContent = (e) => {
+        setFormContent(e.target.value)
+    }
+
+
+    // "content", "username"
 
     return (
         <>
@@ -23,11 +37,11 @@ export const NewCommentModal = (handleAdd) => {
                 {/* <Form onSubmit={handleSubmit}> */}
                 <Form.Group>
                     <Form.Label> Username: </Form.Label>
-                    <Form.Control type="username" placeholder="Enter username"/>
+                    <Form.Control type="username" onChange = {(e) => handleChangeUsername(e)} placeholder="Enter username"/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Comment</Form.Label>
-                    <Form.Control as="textarea" rows={3} />
+                    <Form.Control as="textarea" onChange = {(e) => handleChangeContent(e)} rows={3} />
                 </Form.Group>        
                 {/* </Form> */}
             </Modal.Body>
@@ -35,7 +49,7 @@ export const NewCommentModal = (handleAdd) => {
                 <Button variant="secondary" onClick={handleClose}>
                     Close
                 </Button>
-                <Button variant="primary" onClick={() => handleAdd("content", "username")}>
+                <Button variant="primary" onClick={() => { handleAdd(formContent, formUsername); handleClose() }}>
                     Add
                 </Button>
             </Modal.Footer>

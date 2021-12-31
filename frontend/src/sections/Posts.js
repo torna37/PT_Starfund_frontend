@@ -39,5 +39,6 @@ export const Posts = () => {
                 ))}        
             </Container>
         </div>
+
     )
 }
