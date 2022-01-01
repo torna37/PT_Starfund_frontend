@@ -18,12 +18,12 @@ export const Posts = () => {
             getPosts()
         }, [])
 
-    const handleUpvote = (id) => {
-        doUpvote(id)
+    const handleUpvote = async (id) => {
+        await doUpvote(id)
         getPosts()
     }
-    const handleDownvote = (id) => {
-        doDownvote(id)
+    const handleDownvote = async (id) => {
+        await doDownvote(id)
         getPosts()
     }
 
